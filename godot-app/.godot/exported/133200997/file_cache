@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 res://scenes/app/pages/ChatPage.tscn::e9776d069cbe2dd6b34289743540ea78::1774941992::res://.godot/exported/133200997/export-ec35e1b32b9b963f9a06f822320f1135-ChatPage.scn
 res://scenes/app/pages/HomePage.tscn::040ee423a212f6e4c15e909c6e281d04::1774941992::res://.godot/exported/133200997/export-c64b2abf7f6e00f2fa40f6cd7721a5e4-HomePage.scn
 res://scenes/app/pages/ModelConfigPage.tscn::1d0c0f50ac2ccd43e967406eddb9027e::1774941992::res://.godot/exported/133200997/export-f5ec82f89c1da3c08a0ba9a17004ee97-ModelConfigPage.scn
@@ -9,3 +10,16 @@ res://scenes/pet/DesktopPet.tscn::4cf316ba366b7091e54edef00fb32d59::1774941992::
 res://scenes/pet/PetContextMenu.tscn::4898e3c6bf1a86f2cca1245cb90399e8::1774941992::res://.godot/exported/133200997/export-addb852dbcd155642a4d6839535d17ad-PetContextMenu.scn
 res://scenes/pet/QuickChatPanel.tscn::72696c1ca3bfcd53c2aff86063a45e27::1774941992::res://.godot/exported/133200997/export-26066ff427900fd9d8aa0e402fa677d0-QuickChatPanel.scn
 res://scenes/Main.tscn::3e28ef56d458f79e81e3d7b6893b60d7::1774941992::res://.godot/exported/133200997/export-4a24720ee5e787dbe30abc634fa3679d-Main.scn
+=======
+res://scenes/app/pages/ChatPage.tscn::63bd735e2640a031b2d2ed99d34a2c1e::1774440237::res://.godot/exported/133200997/export-ec35e1b32b9b963f9a06f822320f1135-ChatPage.scn
+res://scenes/app/pages/HomePage.tscn::982a4ec460a1a9d9fe925095bf43181c::1774366877::res://.godot/exported/133200997/export-c64b2abf7f6e00f2fa40f6cd7721a5e4-HomePage.scn
+res://scenes/app/pages/ModelConfigPage.tscn::d9fa5755e2db62b3f29809a63912826d::1774366877::res://.godot/exported/133200997/export-f5ec82f89c1da3c08a0ba9a17004ee97-ModelConfigPage.scn
+res://scenes/app/pages/SkillConfigPage.tscn::032c41229219f7cf194de8f32ec9b470::1774366877::res://.godot/exported/133200997/export-f10f67e2e1e948d3c22d680325d19b68-SkillConfigPage.scn
+res://scenes/app/pages/SystemSettingsPage.tscn::e92d6b53b81fd6a8bfbf56d545106e67::1774366877::res://.godot/exported/133200997/export-15bdd262269c3d77eb8eb39758c97b0e-SystemSettingsPage.scn
+res://scenes/app/MainApp.tscn::c22060c77845ac889015f44047ed3188::1774440207::res://.godot/exported/133200997/export-dc298250bd38a51ae7e5c2325a31637b-MainApp.scn
+res://scenes/common/StatusBadge.tscn::fe35d6ca6923855f0ffbc9b39403e528::1774366877::res://.godot/exported/133200997/export-6594ee216871602704a75e18a87a38ce-StatusBadge.scn
+res://scenes/pet/DesktopPet.tscn::506d27b13858b97350bf2989e3397e8e::1774366877::res://.godot/exported/133200997/export-5c6f0b292e024f61c1552f5b337b21d2-DesktopPet.scn
+res://scenes/pet/PetContextMenu.tscn::e6ef93774cba4d32aa2884a54c0d1b2d::1774366877::res://.godot/exported/133200997/export-addb852dbcd155642a4d6839535d17ad-PetContextMenu.scn
+res://scenes/pet/QuickChatPanel.tscn::c7b6aa9e8dd82f3ad7047463ab6240cb::1774439945::res://.godot/exported/133200997/export-26066ff427900fd9d8aa0e402fa677d0-QuickChatPanel.scn
+res://scenes/Main.tscn::b4dfc097a7396630e5836a4d158f5dae::1774366877::res://.godot/exported/133200997/export-4a24720ee5e787dbe30abc634fa3679d-Main.scn
+>>>>>>> Stashed changes
