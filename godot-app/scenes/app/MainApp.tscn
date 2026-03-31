@@ -1,0 +1,312 @@
+[gd_scene load_steps=16 format=3 uid="uid://c4fcb64hvpw8w"]
+
+[ext_resource type="Script" path="res://scripts/app/MainApp.gd" id="1_pqtr1"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/HomePage.tscn" id="2_mq2vy"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/ChatPage.tscn" id="3_8e5rc"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/ModelConfigPage.tscn" id="4_uu8kg"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/SkillConfigPage.tscn" id="5_3vpef"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/SystemSettingsPage.tscn" id="6_e5e62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_app"]
+bg_color = Color(0.0901961, 0.0745098, 0.121569, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0.141176, 0.109804, 0.180392, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.901961, 0.756863, 0.12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sidebar"]
+bg_color = Color(0.117647, 0.0941176, 0.14902, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.882353, 0.733333, 0.08)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_page"]
+bg_color = Color(0.101961, 0.0784314, 0.12549, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nav"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nav_hover"]
+bg_color = Color(1, 0.960784, 0.913725, 0.08)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.12)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nav_active"]
+bg_color = Color(0.870588, 0.384314, 0.227451, 0.96)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.870588, 0.384314, 0.227451, 0.18)
+shadow_size = 8
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close"]
+bg_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_hover"]
+bg_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="MainApp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("1_pqtr1")
+
+[node name="RootPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_app")
+
+[node name="MarginContainer" type="MarginContainer" parent="RootPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RootVBox" type="VBoxContainer" parent="RootPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="TopBarPanel" type="PanelContainer" parent="RootPanel/MarginContainer/RootVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="TopBarMargin" type="MarginContainer" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="TopBar" type="HBoxContainer" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar"]
+layout_mode = 2
+text = "QQPAL 工作台"
+theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="TopNav" type="HBoxContainer" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HomeButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(92, 40)
+layout_mode = 2
+toggle_mode = true
+text = "首页"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
+[node name="ChatButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(92, 40)
+layout_mode = 2
+toggle_mode = true
+text = "对话"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
+[node name="ModelButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(108, 40)
+layout_mode = 2
+toggle_mode = true
+text = "模型配置"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
+[node name="SkillButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(108, 40)
+layout_mode = 2
+toggle_mode = true
+text = "技能配置"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
+[node name="SystemButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(108, 40)
+layout_mode = 2
+toggle_mode = true
+text = "系统设置"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
+[node name="SubtitleLabel" type="Label" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "当前页面：首页"
+theme_override_colors/font_color = Color(1, 0.905882, 0.796078, 0.88)
+theme_override_font_sizes/font_size = 16
+
+[node name="CloseButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar"]
+custom_minimum_size = Vector2(110, 42)
+layout_mode = 2
+text = "关闭"
+theme_override_styles/normal = SubResource("StyleBoxFlat_close")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_close")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.96)
+theme_override_font_sizes/font_size = 16
+
+[node name="BodyRow" type="HBoxContainer" parent="RootPanel/MarginContainer/RootVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="SideNavPanel" type="PanelContainer" parent="RootPanel/MarginContainer/RootVBox/BodyRow"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sidebar")
+
+[node name="SideNavMargin" type="MarginContainer" parent="RootPanel/MarginContainer/RootVBox/BodyRow/SideNavPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 18
+
+[node name="SideNav" type="VBoxContainer" parent="RootPanel/MarginContainer/RootVBox/BodyRow/SideNavPanel/SideNavMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="NavTitleLabel" type="Label" parent="RootPanel/MarginContainer/RootVBox/BodyRow/SideNavPanel/SideNavMargin/SideNav"]
+layout_mode = 2
+text = "模块导航"
+theme_override_colors/font_color = Color(1, 0.94902, 0.901961, 0.96)
+theme_override_font_sizes/font_size = 18
+
+[node name="NavHintLabel" type="Label" parent="RootPanel/MarginContainer/RootVBox/BodyRow/SideNavPanel/SideNavMargin/SideNav"]
+layout_mode = 2
+text = "左侧选择模块，右侧查看信息"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.64)
+theme_override_font_sizes/font_size = 13
+
+[node name="PageContainer" type="PanelContainer" parent="RootPanel/MarginContainer/RootVBox/BodyRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_page")
+
+[node name="HomePage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("2_mq2vy")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ChatPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("3_8e5rc")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ModelConfigPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("4_uu8kg")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SkillConfigPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("5_3vpef")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SystemSettingsPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("6_e5e62")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/ChatButton" to="." method="_on_chat_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/ModelButton" to="." method="_on_model_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/SystemButton" to="." method="_on_system_button_pressed"]

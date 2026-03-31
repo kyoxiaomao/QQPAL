@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg6wdtwf8ipg8"]
+
+[ext_resource type="Script" path="res://scripts/app/HomePage.gd" id="1_7vkho"]
+
+[node name="HomePage" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("1_7vkho")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "首页 / 总览"
+
+[node name="CurrentStateLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "当前状态：待机中（idle）"
+
+[node name="TaskIdLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "任务 ID："
+
+[node name="SummaryLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "最近结果：暂无"
+
+[node name="HintLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "可以用下面按钮直接触发 mock 状态流。"
+
+[node name="ButtonRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SimulateSuccessButton" type="Button" parent="VBoxContainer/ButtonRow"]
+custom_minimum_size = Vector2(130, 38)
+layout_mode = 2
+text = "模拟成功流程"
+
+[node name="SimulateFailButton" type="Button" parent="VBoxContainer/ButtonRow"]
+custom_minimum_size = Vector2(130, 38)
+layout_mode = 2
+text = "模拟失败流程"
+
+[connection signal="pressed" from="VBoxContainer/ButtonRow/SimulateSuccessButton" to="." method="_on_simulate_success_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonRow/SimulateFailButton" to="." method="_on_simulate_fail_button_pressed"]

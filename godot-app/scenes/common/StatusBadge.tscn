@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b43jk8f1pcr7b"]
+
+[node name="StatusBadge" type="PanelContainer"]
+custom_minimum_size = Vector2(120, 32)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "状态占位"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=3 uid="uid://clw0jlwmq8uav"]
+
+[ext_resource type="Script" path="res://scripts/pet/QuickChatPanel.gd" id="1_s1krn"]
+[ext_resource type="Texture2D" path="res://assets/pets/animations/idle/frame_000001.png" id="2_gffnn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.101961, 0.0784314, 0.12549, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.16)
+shadow_color = Color(0.027451, 0.0117647, 0.0431373, 0.32)
+shadow_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_history"]
+bg_color = Color(1, 0.960784, 0.913725, 0.08)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.898039, 0.745098, 0.1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.176471, 0.14902, 0.2, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.917647, 0.788235, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input_focus"]
+bg_color = Color(0.196078, 0.164706, 0.223529, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.992157, 0.666667, 0.431373, 0.8)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_primary"]
+bg_color = Color(0.870588, 0.384314, 0.227451, 0.96)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.870588, 0.384314, 0.227451, 0.24)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_primary_hover"]
+bg_color = Color(0.921569, 0.458824, 0.266667, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.921569, 0.458824, 0.266667, 0.3)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_hover"]
+bg_color = Color(1, 1, 1, 0.16)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+bg_color = Color(1, 0.933333, 0.835294, 0.18)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.831373, 0.631373, 0.32)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(1, 0.580392, 0.345098, 0.18)
+shadow_size = 8
+
+[node name="QuickChatPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("1_s1krn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="IdentityBlock" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="AvatarWrap" type="PanelContainer" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
+
+[node name="AvatarMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/AvatarWrap"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Avatar" type="TextureRect" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/AvatarWrap/AvatarMargin"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_gffnn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextBlock" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/TextBlock"]
+layout_mode = 2
+mouse_filter = 2
+text = "QQPAL"
+theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/TextBlock"]
+layout_mode = 2
+mouse_filter = 2
+text = "待机中"
+theme_override_colors/font_color = Color(0.976471, 0.823529, 0.678431, 0.96)
+theme_override_font_sizes/font_size = 13
+
+[node name="WindowActions" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 8
+
+[node name="MinimizeButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderRow/WindowActions"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 1
+flat = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_icon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_icon_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_icon")
+theme_override_styles/focus = SubResource("StyleBoxFlat_icon")
+
+[node name="MaximizeButton" type="Button" parent="MarginContainer/VBoxContainer/HeaderRow/WindowActions"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 1
+flat = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_icon")
+theme_override_styles/hover = SubResource("StyleBoxFlat_icon_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_icon")
+theme_override_styles/focus = SubResource("StyleBoxFlat_icon")
+
+[node name="HistoryLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+bbcode_enabled = false
+scroll_active = true
+text = "[系统] 你好，我是 QQPAL。\n"
+theme_override_styles/normal = SubResource("StyleBoxFlat_history")
+theme_override_colors/default_color = Color(1, 0.968627, 0.929412, 0.96)
+theme_override_font_sizes/normal_font_size = 14
+scroll_following = true
+
+[node name="InputRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InputLine" type="LineEdit" parent="MarginContainer/VBoxContainer/InputRow"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "直接输入一句需求，含“失败”会触发失败流程"
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_styles/focus = SubResource("StyleBoxFlat_input_focus")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_input")
+theme_override_colors/font_color = Color(0.980392, 0.980392, 0.988235, 1)
+theme_override_colors/font_placeholder_color = Color(0.776471, 0.803922, 0.870588, 0.55)
+theme_override_font_sizes/font_size = 14
+
+[node name="SendButton" type="Button" parent="MarginContainer/VBoxContainer/InputRow"]
+custom_minimum_size = Vector2(104, 42)
+layout_mode = 2
+text = "发送"
+theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_primary_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_primary")
+theme_override_colors/font_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_font_sizes/font_size = 14
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/InputRow/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HeaderRow/WindowActions/MinimizeButton" to="." method="_on_minimize_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HeaderRow/WindowActions/MaximizeButton" to="." method="_on_maximize_button_pressed"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/AvatarWrap" to="." method="_on_avatar_wrap_gui_input"]

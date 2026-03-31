@@ -1,0 +1,2 @@
+- runtime-core 最终实现语言： Python
+- godot-app 主脚本语言： GDScript

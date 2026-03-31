@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 8765,
+  "planning_delay_seconds": 0.8,
+  "running_delay_seconds": 1.2,
+  "success_delay_seconds": 0.6
+}

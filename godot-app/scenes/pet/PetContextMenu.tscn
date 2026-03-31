@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d46b0lx4u03l8"]
+
+[ext_resource type="Script" path="res://scripts/pet/PetContextMenu.gd" id="1_abv3x"]
+
+[node name="PetContextMenu" type="PopupMenu"]
+script = ExtResource("1_abv3x")

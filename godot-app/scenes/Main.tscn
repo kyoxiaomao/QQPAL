@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2txw3r3grqnf"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_0b4g8"]
+[ext_resource type="PackedScene" path="res://scenes/pet/DesktopPet.tscn" id="2_8e1r5"]
+[ext_resource type="PackedScene" path="res://scenes/app/MainApp.tscn" id="3_4nddu"]
+[ext_resource type="Script" path="res://scripts/services/MockTaskService.gd" id="4_jeyov"]
+[ext_resource type="PackedScene" path="res://scenes/pet/QuickChatPanel.tscn" id="5_awx34"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0b4g8")
+
+[node name="MockTaskService" type="Node" parent="."]
+script = ExtResource("4_jeyov")
+
+[node name="DesktopPet" parent="." instance=ExtResource("2_8e1r5")]
+
+[node name="QuickChatWindow" type="Window" parent="."]
+visible = false
+title = "快捷对话"
+
+[node name="QuickChatPanel" parent="QuickChatWindow" instance=ExtResource("5_awx34")]
+
+[node name="MainAppWindow" type="Window" parent="."]
+visible = false
+title = "QQPAL 应用"
+
+[node name="MainApp" parent="MainAppWindow" instance=ExtResource("3_4nddu")]

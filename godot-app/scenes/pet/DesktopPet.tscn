@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh7twy5rcsr12"]
+
+[ext_resource type="Script" path="res://scripts/pet/DesktopPet.gd" id="1_8uymr"]
+[ext_resource type="Script" path="res://scripts/state/PetStateController.gd" id="2_8eijh"]
+[ext_resource type="PackedScene" path="res://scenes/pet/PetContextMenu.tscn" id="4_3ai8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue1hy"]
+size = Vector2(360, 480)
+
+[node name="DesktopPet" type="Node2D"]
+script = ExtResource("1_8uymr")
+
+[node name="PetVisual" type="AnimatedSprite2D" parent="."]
+position = Vector2(238, 450)
+scale = Vector2(0.46, 0.46)
+
+[node name="ClickArea" type="Area2D" parent="."]
+position = Vector2(238, 410)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("RectangleShape2D_ue1hy")
+
+[node name="StatusLabel" type="Label" parent="."]
+visible = false
+offset_left = 64.0
+offset_top = 86.0
+offset_right = 336.0
+offset_bottom = 114.0
+text = "状态：待机中"
+
+[node name="StateController" type="Node" parent="."]
+script = ExtResource("2_8eijh")
+
+[node name="PetContextMenu" parent="." instance=ExtResource("4_3ai8s")]

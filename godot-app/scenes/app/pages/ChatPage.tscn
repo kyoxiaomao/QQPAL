@@ -1,0 +1,284 @@
+[gd_scene load_steps=11 format=3 uid="uid://bllx0ef4e0gsy"]
+
+[ext_resource type="Script" path="res://scripts/app/ChatPage.gd" id="1_wr1c6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section"]
+bg_color = Color(0.141176, 0.109804, 0.180392, 0.72)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.901961, 0.756863, 0.12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_history"]
+bg_color = Color(1, 0.960784, 0.913725, 0.08)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.898039, 0.745098, 0.1)
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 16.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.176471, 0.14902, 0.2, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.917647, 0.788235, 0.08)
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input_focus"]
+bg_color = Color(0.196078, 0.164706, 0.223529, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.992157, 0.666667, 0.431373, 0.8)
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_primary"]
+bg_color = Color(0.870588, 0.384314, 0.227451, 0.96)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.870588, 0.384314, 0.227451, 0.24)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_primary_hover"]
+bg_color = Color(0.921569, 0.458824, 0.266667, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.921569, 0.458824, 0.266667, 0.3)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_task"]
+bg_color = Color(1, 1, 1, 0.04)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_task_hover"]
+bg_color = Color(1, 0.960784, 0.913725, 0.08)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.12)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
+bg_color = Color(1, 0.933333, 0.835294, 0.12)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.831373, 0.631373, 0.22)
+content_margin_left = 12.0
+content_margin_top = 7.0
+content_margin_right = 12.0
+content_margin_bottom = 7.0
+
+[node name="ChatPage" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("1_wr1c6")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="RootRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="TaskPanel" type="PanelContainer" parent="RootRow"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_section")
+
+[node name="TaskMargin" type="MarginContainer" parent="RootRow/TaskPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="TaskVBox" type="VBoxContainer" parent="RootRow/TaskPanel/TaskMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TaskTitleLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+layout_mode = 2
+text = "对话任务"
+theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="TaskHintLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+layout_mode = 2
+text = "左侧点击常用任务，右侧查看历史与发送新需求"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.66)
+theme_override_font_sizes/font_size = 13
+
+[node name="DraftTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "梳理需求"
+theme_override_styles/normal = SubResource("StyleBoxFlat_task")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_font_sizes/font_size = 15
+
+[node name="PlanTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "生成执行方案"
+theme_override_styles/normal = SubResource("StyleBoxFlat_task")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_font_sizes/font_size = 15
+
+[node name="SummaryTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "总结当前进展"
+theme_override_styles/normal = SubResource("StyleBoxFlat_task")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_font_sizes/font_size = 15
+
+[node name="ContinueTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "继续当前任务"
+theme_override_styles/normal = SubResource("StyleBoxFlat_task")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_font_sizes/font_size = 15
+
+[node name="TaskSpacer" type="Control" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaskFooterLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+layout_mode = 2
+text = "任务按钮会直接作为对话输入发送"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.54)
+theme_override_font_sizes/font_size = 12
+
+[node name="ChatPanel" type="PanelContainer" parent="RootRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_section")
+
+[node name="ChatMargin" type="MarginContainer" parent="RootRow/ChatPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ChatVBox" type="VBoxContainer" parent="RootRow/ChatPanel/ChatMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="HeaderRow" type="HBoxContainer" parent="RootRow/ChatPanel/ChatMargin/ChatVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="RootRow/ChatPanel/ChatMargin/ChatVBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "对话工作台"
+theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
+theme_override_font_sizes/font_size = 22
+
+[node name="StatusPanel" type="PanelContainer" parent="RootRow/ChatPanel/ChatMargin/ChatVBox/HeaderRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="StatusLabel" type="Label" parent="RootRow/ChatPanel/ChatMargin/ChatVBox/HeaderRow/StatusPanel"]
+layout_mode = 2
+text = "待机中"
+theme_override_colors/font_color = Color(1, 0.929412, 0.862745, 0.96)
+theme_override_font_sizes/font_size = 14
+
+[node name="HistoryLabel" type="RichTextLabel" parent="RootRow/ChatPanel/ChatMargin/ChatVBox"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = false
+scroll_active = true
+text = "[系统] 这里会展示完整对话记录。\n"
+theme_override_styles/normal = SubResource("StyleBoxFlat_history")
+theme_override_colors/default_color = Color(1, 0.968627, 0.929412, 0.96)
+theme_override_font_sizes/normal_font_size = 15
+scroll_following = true
+
+[node name="InputRow" type="HBoxContainer" parent="RootRow/ChatPanel/ChatMargin/ChatVBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InputLine" type="LineEdit" parent="RootRow/ChatPanel/ChatMargin/ChatVBox/InputRow"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "直接输入一句需求，含“失败”会触发失败流程"
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_styles/focus = SubResource("StyleBoxFlat_input_focus")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_input")
+theme_override_colors/font_color = Color(0.980392, 0.980392, 0.988235, 1)
+theme_override_colors/font_placeholder_color = Color(0.776471, 0.803922, 0.870588, 0.55)
+theme_override_font_sizes/font_size = 14
+
+[node name="SendButton" type="Button" parent="RootRow/ChatPanel/ChatMargin/ChatVBox/InputRow"]
+custom_minimum_size = Vector2(104, 44)
+layout_mode = 2
+text = "发送"
+theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_primary_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_primary")
+theme_override_colors/font_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_font_sizes/font_size = 14
+
+[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/DraftTaskButton" to="." method="_on_draft_task_button_pressed"]
+[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/PlanTaskButton" to="." method="_on_plan_task_button_pressed"]
+[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/SummaryTaskButton" to="." method="_on_summary_task_button_pressed"]
+[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/ContinueTaskButton" to="." method="_on_continue_task_button_pressed"]
+[connection signal="pressed" from="RootRow/ChatPanel/ChatMargin/ChatVBox/InputRow/SendButton" to="." method="_on_send_button_pressed"]

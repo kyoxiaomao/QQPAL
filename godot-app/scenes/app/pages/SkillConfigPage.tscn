@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bvbc5t4ivx0el"]
+
+[node name="SkillConfigPage" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "技能配置"
+
+[node name="HintLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "首版先提供技能开关和参数占位。"
+
+[node name="SkillA" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "启用桌面任务技能"
+button_pressed = true
+
+[node name="SkillB" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "启用文档摘要技能"
+
+[node name="SkillC" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "启用提醒技能"
