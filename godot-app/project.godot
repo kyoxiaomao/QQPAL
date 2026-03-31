@@ -27,6 +27,5 @@ window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 
 [rendering]
-
-renderer/rendering_method="mobile"
+renderer/rendering_method="forward_plus"
 viewport/transparent_background=true
