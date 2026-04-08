@@ -1,0 +1,39 @@
+{"ts": "2026-04-08T07:18:37.060573+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:38.864056+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:18:38.875928+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_ok", "url": "http://127.0.0.1:18790/health", "elapsedMs": 0}
+{"ts": "2026-04-08T07:18:38.876952+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ws_connect_start", "url": "ws://127.0.0.1:18790/ws"}
+{"ts": "2026-04-08T07:18:38.915632+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ws_connect_ok", "url": "ws://127.0.0.1:18790/ws", "elapsedMs": 46}
+{"ts": "2026-04-08T07:18:38.916696+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "register_start", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:38.930440+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "register_ack_ok", "deviceId": "godot", "elapsedMs": 16, "message": "registered"}
+{"ts": "2026-04-08T07:18:38.930981+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "connect_ready", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws"}
+{"ts": "2026-04-08T07:18:38.930981+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:41.003077+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:43.018939+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:46.058361+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:46.058361+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:48.036650+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:50.054773+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:52.320214+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:52.320214+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:54.228168+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:56.240257+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:18:58.472703+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_reuse", "deviceId": "godot"}
+{"ts": "2026-04-08T07:18:58.472703+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:19:03.552692+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:19:08.564015+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:19:13.566638+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:19:18.574622+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:19:23.586964+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:19:25.588179+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:19:30.600568+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:19:35.617873+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:19:37.618816+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:19:42.631314+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:19:47.643900+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:19:49.644914+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:19:54.662939+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:19:59.675798+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:20:01.677268+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}
+{"ts": "2026-04-08T07:20:06.690152+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_start", "url": "http://127.0.0.1:18790/health"}
+{"ts": "2026-04-08T07:20:11.708743+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "health_error", "deviceId": "godot", "url": "ws://127.0.0.1:18790/ws", "error": "timed out"}
+{"ts": "2026-04-08T07:20:13.709944+00:00", "kind": "runtime.bridge.connect", "source": "runtime-core", "stage": "ensure_connection_start", "deviceId": "godot", "bridgeHost": "127.0.0.1", "bridgePort": 18790, "bridgeWsPath": "/ws"}

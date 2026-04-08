@@ -1,12 +1,14 @@
 extends PanelContainer
 
 signal quick_task_requested(text: String)
+signal stop_requested
 signal open_app_requested
 signal close_requested
 
 @onready var status_label: Label = $MarginContainer/VBoxContainer/HeaderRow/IdentityBlock/TextBlock/StatusLabel
 @onready var history_label: RichTextLabel = $MarginContainer/VBoxContainer/HistoryLabel
 @onready var input_line: LineEdit = $MarginContainer/VBoxContainer/InputRow/InputLine
+@onready var send_button: Button = $MarginContainer/VBoxContainer/InputRow/SendButton
 @onready var minimize_button: Button = $MarginContainer/VBoxContainer/HeaderRow/WindowActions/MinimizeButton
 @onready var maximize_button: Button = $MarginContainer/VBoxContainer/HeaderRow/WindowActions/MaximizeButton
 
@@ -17,6 +19,9 @@ var _drag_active := false
 var _drag_started := false
 var _drag_mouse_start := Vector2i.ZERO
 var _drag_window_start := Vector2i.ZERO
+var _busy := false
+var _messages: Array[Dictionary] = []
+var _active_assistant_index := -1
 
 
 func _ready() -> void:
@@ -32,12 +37,68 @@ func set_status_text(text: String) -> void:
 	status_label.text = text
 
 
+func set_busy(busy: bool) -> void:
+	_busy = busy
+	send_button.text = "停止" if busy else "发送"
+
+
+func set_action_enabled(enabled: bool) -> void:
+	send_button.disabled = not enabled
+	input_line.editable = enabled and not _busy
+
+
 func append_message(role: String, text: String) -> void:
-	history_label.text += "[%s] %s\n" % [role, text]
+	_messages.append({
+		"role": role,
+		"text": text,
+	})
+	_render_history()
+
+
+func append_system_message(text: String) -> void:
+	append_message("系统", text)
+
+
+func begin_assistant_message() -> void:
+	_active_assistant_index = _messages.size()
+	_messages.append({
+		"role": "QQPAL",
+		"text": "…",
+	})
+	_render_history()
+
+
+func update_assistant_message(text: String) -> void:
+	if _active_assistant_index < 0 or _active_assistant_index >= _messages.size():
+		begin_assistant_message()
+	_messages[_active_assistant_index]["text"] = text if not text.is_empty() else "…"
+	_render_history()
+
+
+func finish_assistant_message(text: String, interrupted: bool = false) -> void:
+	update_assistant_message(text)
+	if _active_assistant_index >= 0 and _active_assistant_index < _messages.size():
+		var final_text := str(_messages[_active_assistant_index].get("text", ""))
+		if interrupted and not final_text.contains("已停止"):
+			final_text = "%s\n[已停止]" % final_text.strip_edges()
+		_messages[_active_assistant_index]["text"] = final_text
+	_active_assistant_index = -1
+	_render_history()
+
+
+func _render_history() -> void:
+	var lines: Array[String] = []
+	for item in _messages:
+		lines.append("[%s] %s" % [str(item.get("role", "")), str(item.get("text", ""))])
+	history_label.text = "\n".join(lines)
 	history_label.scroll_to_line(history_label.get_line_count())
 
 
 func _on_send_button_pressed() -> void:
+	if _busy:
+		stop_requested.emit()
+		return
+
 	var text := input_line.text.strip_edges()
 	if text.is_empty():
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4fcb64hvpw8w"]
+[gd_scene load_steps=17 format=3 uid="uid://c4fcb64hvpw8w"]
 
 [ext_resource type="Script" path="res://scripts/app/MainApp.gd" id="1_pqtr1"]
 [ext_resource type="PackedScene" path="res://scenes/app/pages/HomePage.tscn" id="2_mq2vy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/app/pages/ModelConfigPage.tscn" id="4_uu8kg"]
 [ext_resource type="PackedScene" path="res://scenes/app/pages/SkillConfigPage.tscn" id="5_3vpef"]
 [ext_resource type="PackedScene" path="res://scenes/app/pages/SystemSettingsPage.tscn" id="6_e5e62"]
+[ext_resource type="PackedScene" path="res://scenes/app/pages/MarketPage.tscn" id="7_bfr7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_app"]
 bg_color = Color(0.0901961, 0.0745098, 0.121569, 0.98)
@@ -197,6 +198,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
 theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
 theme_override_font_sizes/font_size = 15
 
+[node name="MarketButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
+custom_minimum_size = Vector2(108, 40)
+layout_mode = 2
+toggle_mode = true
+text = "龙虾市场"
+theme_override_styles/normal = SubResource("StyleBoxFlat_nav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nav_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nav_active")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.88)
+theme_override_font_sizes/font_size = 15
+
 [node name="SystemButton" type="Button" parent="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav"]
 custom_minimum_size = Vector2(108, 40)
 layout_mode = 2
@@ -297,6 +309,13 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="MarketPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("7_bfr7m")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="SystemSettingsPage" parent="RootPanel/MarginContainer/RootVBox/BodyRow/PageContainer" instance=ExtResource("6_e5e62")]
 visible = false
 layout_mode = 1
@@ -309,4 +328,5 @@ anchor_bottom = 1.0
 [connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/ChatButton" to="." method="_on_chat_button_pressed"]
 [connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/ModelButton" to="." method="_on_model_button_pressed"]
 [connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/MarketButton" to="." method="_on_market_button_pressed"]
 [connection signal="pressed" from="RootPanel/MarginContainer/RootVBox/TopBarPanel/TopBarMargin/TopBar/TopNav/SystemButton" to="." method="_on_system_button_pressed"]

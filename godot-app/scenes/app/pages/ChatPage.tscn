@@ -134,68 +134,61 @@ theme_override_constants/margin_bottom = 18
 
 [node name="TaskVBox" type="VBoxContainer" parent="RootRow/TaskPanel/TaskMargin"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 12
 
-[node name="TaskTitleLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+[node name="SearchInput" type="LineEdit" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-text = "对话任务"
-theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
-theme_override_font_sizes/font_size = 20
+placeholder_text = "搜索对话记录"
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_styles/focus = SubResource("StyleBoxFlat_input_focus")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_input")
+theme_override_colors/font_color = Color(0.980392, 0.980392, 0.988235, 1)
+theme_override_colors/font_placeholder_color = Color(0.776471, 0.803922, 0.870588, 0.55)
+theme_override_font_sizes/font_size = 14
 
-[node name="TaskHintLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+[node name="NewChatButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
-text = "左侧点击常用任务，右侧查看历史与发送新需求"
-autowrap_mode = 3
-theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.66)
-theme_override_font_sizes/font_size = 13
+text = "新对话"
+theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_primary_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_primary")
+theme_override_colors/font_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_font_sizes/font_size = 14
 
-[node name="DraftTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-text = "梳理需求"
-theme_override_styles/normal = SubResource("StyleBoxFlat_task")
-theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
-theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
-theme_override_font_sizes/font_size = 15
-
-[node name="PlanTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-text = "生成执行方案"
-theme_override_styles/normal = SubResource("StyleBoxFlat_task")
-theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
-theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
-theme_override_font_sizes/font_size = 15
-
-[node name="SummaryTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-text = "总结当前进展"
-theme_override_styles/normal = SubResource("StyleBoxFlat_task")
-theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
-theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
-theme_override_font_sizes/font_size = 15
-
-[node name="ContinueTaskButton" type="Button" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-text = "继续当前任务"
-theme_override_styles/normal = SubResource("StyleBoxFlat_task")
-theme_override_styles/hover = SubResource("StyleBoxFlat_task_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_task_hover")
-theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
-theme_override_font_sizes/font_size = 15
-
-[node name="TaskSpacer" type="Control" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+[node name="RecordList" type="ItemList" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_history")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_colors/font_selected_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/font_hovered_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/font_hovered_selected_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/guide_color = Color(1, 0.905882, 0.72549, 0.08)
+theme_override_colors/cursor_color = Color(0.992157, 0.666667, 0.431373, 0.85)
+theme_override_colors/selected_focus_rect_color = Color(1, 0.905882, 0.72549, 0.14)
+theme_override_font_sizes/font_size = 14
+auto_height = true
+select_mode = 0
+allow_reselect = true
+
+[node name="RecordsEmptyLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "暂无匹配的对话记录"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.54)
+theme_override_font_sizes/font_size = 13
 
 [node name="TaskFooterLabel" type="Label" parent="RootRow/TaskPanel/TaskMargin/TaskVBox"]
 layout_mode = 2
-text = "任务按钮会直接作为对话输入发送"
+text = "共 0 条对话"
 autowrap_mode = 3
 theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.54)
 theme_override_font_sizes/font_size = 12
@@ -277,8 +270,80 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_primary")
 theme_override_colors/font_color = Color(1, 0.976471, 0.956863, 1)
 theme_override_font_sizes/font_size = 14
 
-[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/DraftTaskButton" to="." method="_on_draft_task_button_pressed"]
-[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/PlanTaskButton" to="." method="_on_plan_task_button_pressed"]
-[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/SummaryTaskButton" to="." method="_on_summary_task_button_pressed"]
-[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/ContinueTaskButton" to="." method="_on_continue_task_button_pressed"]
+[node name="FilePanel" type="PanelContainer" parent="RootRow"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_section")
+
+[node name="FileMargin" type="MarginContainer" parent="RootRow/FilePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="FileVBox" type="VBoxContainer" parent="RootRow/FilePanel/FileMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="FileTitleLabel" type="Label" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+layout_mode = 2
+text = "AI 文档"
+theme_override_colors/font_color = Color(1, 0.972549, 0.929412, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="FileHintLabel" type="Label" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+layout_mode = 2
+text = "这里展示当前会话下 AI 生成的文档文件"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.66)
+theme_override_font_sizes/font_size = 13
+
+[node name="FileList" type="ItemList" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_history")
+theme_override_colors/font_color = Color(1, 0.956863, 0.909804, 0.92)
+theme_override_colors/font_selected_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/font_hovered_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/font_hovered_selected_color = Color(1, 0.976471, 0.956863, 1)
+theme_override_colors/guide_color = Color(1, 0.905882, 0.72549, 0.08)
+theme_override_colors/cursor_color = Color(0.992157, 0.666667, 0.431373, 0.85)
+theme_override_colors/selected_focus_rect_color = Color(1, 0.905882, 0.72549, 0.14)
+theme_override_font_sizes/font_size = 14
+auto_height = true
+select_mode = 0
+allow_reselect = true
+
+[node name="FileEmptyLabel" type="Label" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+visible = false
+layout_mode = 2
+text = "当前会话还没有生成文档"
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.54)
+theme_override_font_sizes/font_size = 13
+
+[node name="FileMetaLabel" type="Label" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+layout_mode = 2
+text = "未选择文件"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.878431, 0.792157, 0.54)
+theme_override_font_sizes/font_size = 12
+
+[node name="FileContent" type="RichTextLabel" parent="RootRow/FilePanel/FileMargin/FileVBox"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = false
+scroll_active = true
+text = "当前会话还没有生成文档。"
+theme_override_styles/normal = SubResource("StyleBoxFlat_history")
+theme_override_colors/default_color = Color(1, 0.968627, 0.929412, 0.96)
+theme_override_font_sizes/normal_font_size = 14
+scroll_following = true
+
+[connection signal="pressed" from="RootRow/TaskPanel/TaskMargin/TaskVBox/NewChatButton" to="." method="_on_new_chat_button_pressed"]
 [connection signal="pressed" from="RootRow/ChatPanel/ChatMargin/ChatVBox/InputRow/SendButton" to="." method="_on_send_button_pressed"]

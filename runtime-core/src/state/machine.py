@@ -11,11 +11,14 @@ class DemoTaskStateMachine:
 
     def run(self, task: TaskRecord, should_fail: bool = False) -> None:
         self._transition(task, TaskStatus.TALKING, "正在确认需求")
-        sleep(self._settings.planning_delay_seconds / 2.0)
+        if self._sleep_with_cancel(task, self._settings.planning_delay_seconds / 2.0):
+            return
         self._transition(task, TaskStatus.PLANNING, "正在生成执行方案")
-        sleep(self._settings.planning_delay_seconds)
+        if self._sleep_with_cancel(task, self._settings.planning_delay_seconds):
+            return
         self._transition(task, TaskStatus.RUNNING, "正在执行任务")
-        sleep(self._settings.running_delay_seconds)
+        if self._sleep_with_cancel(task, self._settings.running_delay_seconds):
+            return
 
         if should_fail:
             task.error = "示例任务执行失败"
@@ -25,9 +28,22 @@ class DemoTaskStateMachine:
             self._transition(task, TaskStatus.SUCCESS, "任务执行完成")
 
         task.timestamps["finished_at"] = utc_now_iso()
-        sleep(self._settings.success_delay_seconds)
+        self._sleep_with_cancel(task, self._settings.success_delay_seconds)
 
     def _transition(self, task: TaskRecord, status: TaskStatus, status_text: str) -> None:
         task.status = status.value
         task.timestamps["updated_at"] = utc_now_iso()
         task.timestamps["status_text"] = status_text
+
+    def _sleep_with_cancel(self, task: TaskRecord, seconds: float) -> bool:
+        step_seconds = 0.1
+        remaining = max(seconds, 0.0)
+        while remaining > 0.0:
+            if task.cancel_requested:
+                task.error = "任务已停止"
+                self._transition(task, TaskStatus.FAILED, "任务已停止")
+                task.timestamps["finished_at"] = utc_now_iso()
+                return True
+            sleep(min(step_seconds, remaining))
+            remaining -= step_seconds
+        return False

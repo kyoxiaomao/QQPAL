@@ -1,5 +1,7 @@
 extends Node
 
+const QuickChatRuntimeService = preload("res://scripts/services/QuickChatRuntimeService.gd")
+
 @onready var desktop_pet = $DesktopPet
 @onready var quick_chat_window: Window = $QuickChatWindow
 @onready var quick_chat_panel = $QuickChatWindow/QuickChatPanel
@@ -13,16 +15,20 @@ const QUICK_CHAT_WINDOW_SIZE := Vector2i(460, 340)
 const APP_WINDOW_SIZE := Vector2i(1040, 720)
 const WINDOW_MARGIN := Vector2i(24, 32)
 
+var _quick_chat_runtime_service
+
 
 func _ready() -> void:
 	_configure_root_window()
 	_configure_subwindows()
+	_quick_chat_runtime_service = QuickChatRuntimeService.new()
 	desktop_pet.open_app_requested.connect(_on_open_app_requested)
 	desktop_pet.quick_chat_open_requested.connect(_on_quick_chat_open_requested)
 	desktop_pet.quick_task_requested.connect(_on_quick_task_requested)
 	desktop_pet.status_requested.connect(_on_status_requested)
 	desktop_pet.pause_toggled.connect(_on_pause_toggled)
-	quick_chat_panel.quick_task_requested.connect(_on_quick_task_requested)
+	quick_chat_panel.quick_task_requested.connect(_on_quick_chat_task_requested)
+	quick_chat_panel.stop_requested.connect(_on_quick_chat_stop_requested)
 	quick_chat_panel.open_app_requested.connect(_on_quick_chat_open_open_app_requested)
 	quick_chat_panel.close_requested.connect(_on_quick_chat_close_requested)
 	quick_chat_window.close_requested.connect(_on_quick_chat_close_requested)
@@ -31,6 +37,13 @@ func _ready() -> void:
 	main_app.chat_submitted.connect(_on_quick_task_requested)
 	main_app_window.close_requested.connect(_on_close_app_requested)
 	mock_task_service.status_changed.connect(_on_status_changed)
+	_quick_chat_runtime_service.status_changed.connect(_on_quick_chat_runtime_status_changed)
+	_quick_chat_runtime_service.system_message.connect(_on_quick_chat_runtime_system_message)
+	_quick_chat_runtime_service.stream_started.connect(_on_quick_chat_runtime_stream_started)
+	_quick_chat_runtime_service.stream_delta.connect(_on_quick_chat_runtime_stream_delta)
+	_quick_chat_runtime_service.stream_finished.connect(_on_quick_chat_runtime_stream_finished)
+	_quick_chat_runtime_service.stream_failed.connect(_on_quick_chat_runtime_stream_failed)
+	add_child(_quick_chat_runtime_service)
 
 	quick_chat_window.visible = false
 	main_app_window.visible = false
@@ -90,6 +103,17 @@ func _on_quick_task_requested(text: String) -> void:
 	mock_task_service.start_task_flow(text, should_fail)
 
 
+func _on_quick_chat_task_requested(text: String) -> void:
+	if not _quick_chat_runtime_service.submit_text(text):
+		quick_chat_panel.append_system_message("当前无法发送，请等待连接完成。")
+		return
+	quick_chat_panel.begin_assistant_message()
+
+
+func _on_quick_chat_stop_requested() -> void:
+	_quick_chat_runtime_service.stop_current_request()
+
+
 func _on_status_requested() -> void:
 	_on_open_app_requested("home")
 
@@ -110,7 +134,6 @@ func _on_task_flow_requested(flow_type: String) -> void:
 
 func _on_status_changed(state: String, status_text: String, task_data: Dictionary) -> void:
 	desktop_pet.apply_state(state, status_text)
-	quick_chat_panel.set_status_text(status_text)
 	main_app.update_task_state(state, status_text, task_data)
 
 
@@ -123,6 +146,40 @@ func _on_quick_chat_open_open_app_requested() -> void:
 func _on_quick_chat_close_requested() -> void:
 	quick_chat_window.visible = false
 	desktop_pet.release_interaction_state()
+
+
+func _on_quick_chat_runtime_status_changed(status_text: String, is_busy: bool, can_submit: bool) -> void:
+	quick_chat_panel.set_status_text(status_text)
+	quick_chat_panel.set_busy(is_busy)
+	quick_chat_panel.set_action_enabled(can_submit)
+	var pet_state := "idle"
+	if is_busy:
+		pet_state = "talking" if status_text == "等待首包" or status_text == "连接恢复中" else "running"
+	elif status_text == "连接中" or status_text == "服务异常":
+		pet_state = "talking"
+	desktop_pet.apply_state(pet_state, status_text)
+
+
+func _on_quick_chat_runtime_stream_started(_request_id: String) -> void:
+	pass
+
+
+func _on_quick_chat_runtime_system_message(text: String) -> void:
+	quick_chat_panel.append_system_message(text)
+
+
+func _on_quick_chat_runtime_stream_delta(text: String, _request_id: String) -> void:
+	quick_chat_panel.update_assistant_message(text)
+
+
+func _on_quick_chat_runtime_stream_finished(text: String, _request_id: String, interrupted: bool) -> void:
+	quick_chat_panel.finish_assistant_message(text, interrupted)
+
+
+func _on_quick_chat_runtime_stream_failed(error_text: String, _request_id: String) -> void:
+	if error_text.is_empty():
+		return
+	quick_chat_panel.append_system_message(error_text)
 
 
 func _position_quick_chat_window() -> void:

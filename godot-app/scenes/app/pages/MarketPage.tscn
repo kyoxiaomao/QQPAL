@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/app/MarketPage.gd" id="1_8txb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hero"]
+bg_color = Color(0.152941, 0.117647, 0.2, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.72549, 0.12)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.18)
+shadow_size = 10
+
+[node name="MarketPage" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("1_8txb7")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="HeroPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hero")
+
+[node name="HeroMargin" type="MarginContainer" parent="VBoxContainer/HeroPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="HeroVBox" type="VBoxContainer" parent="VBoxContainer/HeroPanel/HeroMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox"]
+layout_mode = 2
+text = "龙虾市场"
+theme_override_colors/font_color = Color(1, 0.968627, 0.929412, 1)
+theme_override_font_sizes/font_size = 26
+
+[node name="HintLabel" type="Label" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox"]
+layout_mode = 2
+text = "浏览 OpenClaw 相关应用与工具卡片，支持安装与卸载操作。"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(1, 0.886275, 0.8, 0.8)
+theme_override_font_sizes/font_size = 14
+
+[node name="StatsRow" type="HBoxContainer" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FeaturedBadge" type="Label" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox/StatsRow"]
+layout_mode = 2
+text = "8 个应用"
+theme_override_colors/font_color = Color(1, 0.968627, 0.929412, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="StatusBadge" type="Label" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox/StatsRow"]
+layout_mode = 2
+text = "首个默认已安装"
+theme_override_colors/font_color = Color(1, 0.968627, 0.929412, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="TypeBadge" type="Label" parent="VBoxContainer/HeroPanel/HeroMargin/HeroVBox/StatsRow"]
+layout_mode = 2
+text = "OpenClaw 专区"
+theme_override_colors/font_color = Color(1, 0.968627, 0.929412, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardsGrid" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
